@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+
+def noteapp(request):
+    return render(request, 'noteapp/noteapp.html')

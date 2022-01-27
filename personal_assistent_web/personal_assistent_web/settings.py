@@ -38,9 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'addressbook.apps.AddressbookConfig',
-    'auth_user.apps.AuthUserConfig',
     'newsapp.apps.NewsappConfig',
-    'noteapp.apps.NoteappConfig'
+    'noteapp.apps.NoteappConfig',
+    'main',
+    'file_manager',
 ]
 
 MIDDLEWARE = [
