@@ -96,4 +96,4 @@ async def liga_sport():
     return result
 
 
-print(asyncio.run(liga_sport()))
+# print(asyncio.run(liga_sport()))
