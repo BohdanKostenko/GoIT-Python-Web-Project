@@ -1,12 +1,20 @@
 {% extends 'main/source.html' %}
 
 {% block title %}
-Noteapp page
+{{ title }}
 {% endblock %}}
 
 
 {% block content %}
-<h2>Noteapp page</h2>
-<h2>Here we will create magic</h2>
-
+    <h2>Noteapp page</h2>
+    <a class="nav-link" href="{% url 'create_note' %}">Create note</a>
+    {% if notes %}
+        {% for el in notes %}
+            <div class="alert alert-success mt-4">
+                <h3>{{ el.note }}</h3>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>You dont have data</p>
+    {% endif %}
 {% endblock %}
