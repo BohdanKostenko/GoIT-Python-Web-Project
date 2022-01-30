@@ -1,5 +1,6 @@
-from .models import Notes
+from .models import *
 from django.forms import ModelForm, TextInput, Textarea
+from django import forms
 
 
 class NotesForm(ModelForm):
@@ -16,3 +17,6 @@ class NotesForm(ModelForm):
                 'placeholder': 'Input here'
             }),
         }
+
+# class NotesForm(ModelForm):
+#     tag = forms.ModelChoiceField(queryset=TAG_CHOICES.objects.all())

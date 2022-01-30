@@ -7,11 +7,15 @@
 
 {% block content %}
     <h2>Noteapp page</h2>
-    <a class="nav-link" href="{% url 'create_note' %}">Create note</a>
+    <div class="btn-group mt-3">
+    <a href="{% url 'create_note' %}" class="btn btn-primary" aria-current="page">Create note</a>
+    </div>
     {% if notes %}
         {% for el in notes %}
             <div class="alert alert-success mt-4">
-                <h3>{{ el.note }}</h3>
+                <h4>Tag: {{ el.tag }}</h4>
+                <h4>Published date: {{ el.pub_date }}</h4>
+                <h5>Note: {{ el.note }} </h5>
             </div>
         {% endfor %}
     {% else %}
