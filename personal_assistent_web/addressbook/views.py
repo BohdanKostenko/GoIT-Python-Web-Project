@@ -39,3 +39,6 @@ def detail(request, contact_id):
 def delete(request, contact_id):
     contact = get_object_or_404(Contact, pk=contact_id).delete()
     return render(request, 'addressbook/delete.html', {'contact': contact})
+
+def edit(request):
+    return render(request, 'addressbook/addressbook.html')
