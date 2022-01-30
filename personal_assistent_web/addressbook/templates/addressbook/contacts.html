@@ -1,0 +1,23 @@
+{% extends 'main/source.html' %}
+
+{% block title %}
+Addressbook page
+{% endblock %}}
+
+{% block content %}
+
+{% if latest_contact_list %}
+<ul>
+    {% for contact in latest_contact_list %}
+    <li><a href="{% url 'detail' contact.id %}">{{contact.name}}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No addressbook is available.</p>
+{% endif %}
+
+<br>
+<a href="../addressbook">
+    <button class="btn btn-primary">Return</button>
+</a>
+{% endblock %}

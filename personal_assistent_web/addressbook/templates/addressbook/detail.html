@@ -1,0 +1,24 @@
+{% extends 'main/source.html' %}
+
+{% block title %}
+Addressbook page
+{% endblock %}}
+
+{% block content %}
+<a href="{% url 'addressbook' %}">
+  <button class="btn btn-primary">Return</button>
+</a>
+<br>
+<h2> {{contact.name}} </h2>
+    <li> {{contact.phone}} {{contact.birthday}} {{contact.email}} {{contact.address}} </li>
+
+<br>
+<a href="{% url 'edit' contact.id %}">
+    <button class="btn btn-primary">Edit</button>
+</a>
+<a href="{% url 'delete' contact.id %}">
+    <button class="btn btn-danger">Delete</button>
+</a>
+
+
+{% endblock %}
