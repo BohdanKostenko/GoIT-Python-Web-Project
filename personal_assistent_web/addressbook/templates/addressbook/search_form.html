@@ -6,22 +6,22 @@ Addressbook page
 
 {% block content %}
 <a href="../addressbook">
-  <button class="btn btn-primary">Return</button>
+    <button class="btn btn-primary">Return</button>
 </a>
 <br>
 
 <html>
 <head>
-<title>Search</title>
+    <title>Search</title>
 </head>
 <body>
 {% if error %}
 <p style="color: red;">Please submit a search term.</p>
 {% endif %}
-<form action="/search/" method="get">
-<input type="text" name="q" required>
+<form action="/addressbook_search/" method="get">
+    <input type="text" name="q" required>
 
-  <button class="btn btn-primary">Search</button>
+    <button class="btn btn-primary">Search</button>
 </form>
 </body>
 </html>

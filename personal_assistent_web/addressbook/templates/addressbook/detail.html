@@ -6,11 +6,11 @@ Addressbook page
 
 {% block content %}
 <a href="{% url 'addressbook' %}">
-  <button class="btn btn-primary">Return</button>
+    <button class="btn btn-primary">Return</button>
 </a>
 <br>
 <h2> {{contact.name}} </h2>
-    <li> {{contact.phone}} {{contact.birthday}} {{contact.email}} {{contact.address}} </li>
+{{contact.phone}} {{contact.birthday}} {{contact.email}} {{contact.address}}
 
 <br>
 <a href="{% url 'edit' contact.id %}">

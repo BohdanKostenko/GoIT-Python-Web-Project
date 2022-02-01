@@ -9,7 +9,7 @@ Addressbook page
 {% if latest_contact_list %}
 <ul>
     {% for contact in latest_contact_list %}
-    <li><a href="{% url 'detail' contact.id %}">{{contact.name}}</a></li>
+    <a href="{% url 'detail' contact.id %}">{{contact.name}} <br></a>
     {% endfor %}
 </ul>
 {% else %}

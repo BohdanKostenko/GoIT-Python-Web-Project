@@ -10,21 +10,22 @@ Addressbook page
 </a>
 <br>
 
-<p>You searched for: <strong>{{ query }}</strong></p>
+<p>You entered number of days: <strong>{{query}}</strong>
+    and birthday should be before <strong>{{data}}</strong></p>
 
 {% if contacts %}
 <p>Found {{ contacts|length }} contact{{ contacts|pluralize }}.</p>
 <ul>
     {% for contact in contacts %}
-    <a href="{% url 'detail' contact.id %}">{{contact.name}}<br> </a>
+    <a href="{% url 'detail' contact.id %}">{{contact.name}}</a> {{contact.birthday}}<br>
     {% endfor %}
 </ul>
 {% else %}
 <p>No contacts matched your search criteria.</p>
 {% endif %}
 
-<a href="../addressbook_search_form">
-    <button class="btn btn-primary">New search</button>
+<a href="../addressbook_input_form">
+    <button class="btn btn-primary">New request</button>
 </a>
 
 {% endblock %}
