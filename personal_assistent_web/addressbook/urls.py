@@ -15,7 +15,8 @@ urlpatterns = [
     # ex: /addressbook/addressbook_contact/5/delete/
     path('addressbook_contact/<int:contact_id>/delete', views.delete, name='delete'),
     # # ex: /addressbook/search/
-    # path('addressbook_search/', views.search, name='addressbook_search'),
+    path('search/', views.search, name='search'),
+    path('search_form/', views.search_form, name='search_form'),
     # ex: /addressbook/search_results/
     # path('search_results', views.search, name='search'),
 ]
