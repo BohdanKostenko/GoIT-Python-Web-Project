@@ -1,0 +1,29 @@
+{% extends 'main/source.html' %}
+
+{% block title %}
+Addressbook page
+{% endblock %}}
+
+{% block content %}
+<a href="../addressbook">
+    <button class="btn btn-primary">Return</button>
+</a>
+<br>
+
+<html>
+<head>
+    <title>Search</title>
+</head>
+<body>
+{% if error %}
+<p style="color: red;">Please submit a search term.</p>
+{% endif %}
+<form action="/addressbook_search/" method="get">
+    <input type="text" name="q" required>
+
+    <button class="btn btn-primary">Search</button>
+</form>
+</body>
+</html>
+
+{% endblock %}
