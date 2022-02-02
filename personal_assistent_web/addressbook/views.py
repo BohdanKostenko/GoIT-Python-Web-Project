@@ -4,6 +4,7 @@ from .models import Contact
 from .forms import ContactForm
 from django.db.models import Q, CharField
 from django.db.models.functions import Lower
+from datetime import datetime, timedelta
 
 
 def addressbook(request):
@@ -71,3 +72,25 @@ def search(request):
 
 def search_form(request):
     return render(request, 'addressbook/search_form.html')
+
+
+def birthday_form(request):
+    now = datetime.today()
+    contacts = Contact.objects.filter(birthday__month=now.strftime("%m"))
+    next_contacts = Contact.objects.filter(birthday__month=(now.month + 1))
+    return render(request, 'addressbook/input_form.html', {'contacts': contacts, 'next_contacts': next_contacts})
+
+
+def birthday(request):
+    now = datetime.today()
+    if 'q' in request.GET:
+        q = request.GET['q']
+    if not q:
+        return HttpResponse('Please submit a search term.')
+    else:
+        res = now + timedelta(int(q))
+        contacts = Contact.objects.filter(
+            Q(birthday__month__lte=res.strftime("%m")),
+            Q(birthday__month__gte=now.strftime("%m")))
+    return render(request, 'addressbook/birthday.html',
+                      {'contacts': contacts, 'query': q, 'data': res.strftime("%m-%d-%Y")})
