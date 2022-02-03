@@ -89,8 +89,19 @@ def birthday(request):
         return HttpResponse('Please submit a search term.')
     else:
         res = now + timedelta(int(q))
+        # contacts = Contact.objects.filter(birthday__day=res.strftime("%d"), birthday__month=res.strftime("%m"))
+        # contacts = Contact.objects.filter(
+        #     Q(birthday__day__lte=res.strftime("%d"), birthday__month__lte=res.strftime("%m")),
+        #     Q(birthday__day__gte=now.strftime("%d"), birthday__month__gte=now.strftime("%m")))
         contacts = Contact.objects.filter(
             Q(birthday__month__lte=res.strftime("%m")),
             Q(birthday__month__gte=now.strftime("%m")))
+        # contacts = Contact.objects.filter(birthday__year=now.year).filter(Q(birthday__lte=now + timedelta(int(q))), Q(birthday__gte=now))
+        # contacts = Contact.objects.filter(Q(birthday__dayofyear__lte=(now + timedelta(int(q))).timetuple().tm_yday),
+        #                                                                   Q(birthday__dayofyear__gte=now.timetuple().tm_yday))
+        # contacts = Contact.objects.filter(Q(birthday__date__lte=(res.strftime("%d"), res.strftime("%m")), Q(birthday__date__gte=(now.strftime("%d"), now.strftime("%m")))
+        # contacts = Contact.objects.filter(birthday__date=res.strftime("%b. %d"))
+        # contacts = Contact.objects.filter(birthday__date__lte=res.strftime("%m%d"),birthday__date__gte=now.strftime("%m%d"),)
+
     return render(request, 'addressbook/birthday.html',
                       {'contacts': contacts, 'query': q, 'data': res.strftime("%m-%d-%Y")})
