@@ -6,14 +6,20 @@
 
 
 {% block content %}
-    <h2>Create note</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.tag }}<br>
-        {{ form.note }}<br>
-        <button type="submit" class="btn btn-success">Create note</button>
-        <span>{{ error }}</span>
-    </form>
+<form action="{% url 'create_note' %}" method = "post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-success">Create note</button>
+    <span>{{ error }}</span>
+</form>
+<!--    <h2>Create note</h2>-->
+<!--    <form method="post">-->
+<!--        {% csrf_token %}-->
+<!--        {{ form.tag }}<br>-->
+<!--        {{ form.note }}<br>-->
+<!--        <button type="submit" class="btn btn-success">Create note</button>-->
+<!--        <span>{{ error }}</span>-->
+<!--    </form>-->
 {% endblock %}
 
 

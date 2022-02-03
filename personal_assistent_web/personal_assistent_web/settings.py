@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'addressbook.apps.AddressbookConfig',
     'newsapp.apps.NewsappConfig',
     'noteapp.apps.NoteappConfig',
-    'main',
-    'file_manager',
+    'main.apps.MainConfig',
+    'file_manager.apps.AuthUserConfig',
 ]
 
 MIDDLEWARE = [
