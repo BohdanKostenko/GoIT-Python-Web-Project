@@ -1,0 +1,33 @@
+{% extends 'main/source.html' %}
+
+{% block title %}
+Addressbook page
+{% endblock %}}
+
+{% block content %}
+<a href="{% url 'noteapp' %}" class="btn btn-primary" aria-current="page">Return</a>
+<br>
+
+<p>You searched for: <strong>{{ query }}</strong></p>
+
+{% if notes %}
+<p>Found {{ notes|length }} note{{ notes|pluralize }}.</p>
+<ul>
+    {% for note in notes %}
+    <div class="alert alert-success mt-4">
+                <h4>Tag: {{ note.tag }}</h4>
+                <h4>Published date: {{ note.pub_date }}</h4>
+                <h5>{{ note.note }} </h5>
+                <a href="{% url 'note-detail' note.id %}" class="btn btn-warning">More options</a>
+    </div>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No contacts matched your search criteria.</p>
+{% endif %}
+
+<a href="{% url 'search_form' %}"
+    <button class="btn btn-primary">New search</button>
+</a>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'main/source.html' %}
+
+{% block title %}
+{{ article.tag }}
+{% endblock %}}
+
+
+{% block content %}
+<div class="features">
+    <h3>Tag: {{ article.tag }}</h3>
+    <p>{{ article.pub_date }}</p>
+    <p>{{ article.note }}</p>
+    <a href="{% url 'note-update' article.id %}" class="btn btn-info">Update</a>
+    <a href="{% url 'note-delete' article.id %}" class="btn btn-danger">Delete</a>
+</div>
+{% endblock %}
+
+

@@ -6,7 +6,7 @@
 
 
 {% block content %}
-<form action="" method = "post">
+<form action="{% url 'create_note' %}" method = "post">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit" class="btn btn-success">Create note</button>

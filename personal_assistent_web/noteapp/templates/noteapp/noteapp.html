@@ -8,14 +8,33 @@
 {% block content %}
     <h2>Noteapp page</h2>
     <div class="btn-group mt-3">
-    <a href="{% url 'create_note' %}" class="btn btn-primary" aria-current="page">Create note</a>
+    <a href="{% url 'create-note' %}" class="btn btn-primary" aria-current="page">Create note</a>
+    <a href="{% url 'search_form' %}" class="btn btn-primary" aria-current="page">Search note</a>
+    </div>
+    <div class="container mt-3">
+    <form action="{% url 'choice_page' %}" method="get">
+    <p><select name="q">
+        <option value="education">education</option>
+        <option value="annotation">annotation</option>
+        <option value="chronicle">chronicle</option>
+        <option value="opened information">opened information</option>
+        <option value="announcement">announcement</option>
+        <option value="private note">private note</option>
+        <option value="event note">event note</option>
+        <option value="business note">business note</option>
+        <option value="review">review</option>
+        <option value="mini story">mini story</option>
+    </select></p>
+    <button type="submit" class="btn btn-primary">Sort by tag</button>
+    </form>
     </div>
     {% if notes %}
         {% for el in notes %}
             <div class="alert alert-success mt-4">
                 <h4>Tag: {{ el.tag }}</h4>
                 <h4>Published date: {{ el.pub_date }}</h4>
-                <h5>Note: {{ el.note }} </h5>
+                <h5>{{ el.note }} </h5>
+                <a href="{% url 'note-detail' el.id %}" class="btn btn-warning">More options</a>
             </div>
         {% endfor %}
     {% else %}

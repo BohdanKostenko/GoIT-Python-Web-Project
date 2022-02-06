@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'addressbook.apps.AddressbookConfig',
     'newsapp.apps.NewsappConfig',
     'noteapp.apps.NoteappConfig',
-    'main',
-    'file_manager',
+    'main.apps.MainConfig',
+    'file_manager.apps.AuthUserConfig',
 ]
 
 MIDDLEWARE = [
@@ -114,7 +114,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = None
 
 
 # Static files (CSS, JavaScript, Images)
