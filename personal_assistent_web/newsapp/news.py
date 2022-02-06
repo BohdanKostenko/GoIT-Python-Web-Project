@@ -11,8 +11,10 @@ def bbc_tech():
     soup = BeautifulSoup(req.content, 'html.parser')
     result = soup.find(
         'a', class_=bbc_cls).get('href')
-    # print(str(result))
-    return f'https://www.bbc.com{result}'
+    link = f'https://www.bbc.com{result}'
+    text = soup.find(
+        'a', class_=bbc_cls).text
+    return link, text, "(bbc.com)"
 
 
 def bbc_sceince():
@@ -21,8 +23,10 @@ def bbc_sceince():
     soup = BeautifulSoup(req.content, 'html.parser')
     result = soup.find(
         'a', class_=bbc_cls).get('href')
-    # print(str(result))
-    return f'https://www.bbc.com{result}'
+    link = f'https://www.bbc.com{result}'
+    text = soup.find(
+        'a', class_=bbc_cls).text
+    return link, text, "(bbc.com)"
 
 
 def bbc_health():
@@ -31,8 +35,10 @@ def bbc_health():
     soup = BeautifulSoup(req.content, 'html.parser')
     result = soup.find(
         'a', class_=bbc_cls).get('href')
-    # print(str(result))
-    return f'https://www.bbc.com{result}'
+    link = f'https://www.bbc.com{result}'
+    text = soup.find(
+        'a', class_=bbc_cls).text
+    return link, text, "(bbc.com)"
 
 
 def bbc_sport():
@@ -46,8 +52,8 @@ def bbc_sport():
     text = soup.find(
         'a',
         class_='gs-c-promo-heading gs-o-faux-block-link__overlay-link sp-o-link-split__anchor gel-double-pica-bold').text
-    result = f'https://www.bbc.com{link}'
-    return result
+    link = f'https://www.bbc.com{link}'
+    return link, text, "(bbc.com)"
 
 
 # news from Liga.net
@@ -55,10 +61,11 @@ def bbc_sport():
 def liga_tech():
     url = "https://tech.liga.net/ua"
     req = requests.get(url, headers={'User-Agent': 'Mozilla'})
-    result = BeautifulSoup(req.text, 'lxml').find(
+    link = BeautifulSoup(req.text, 'lxml').find(
         'div', class_='hidden-xs hidden-sm visible-md visible-1k').find('li').find('a').get('href')
-    # print(str(result))
-    return result
+    text = BeautifulSoup(req.text, 'lxml').find(
+        'div', class_='hidden-xs hidden-sm visible-md visible-1k').find('li').find('a').text
+    return link, text, "(liga.net)"
 
 
 def liga_sceince():
@@ -69,9 +76,7 @@ def liga_sceince():
         'div', class_='news-block-img big-list-article').find('a').get('href')
     text = soup.find(
         'div', class_='news-text').text
-    result = f'<a href="{link}">{text}</a>'
-    # print(str(result))
-    return link
+    return link, text, "(liga.net)"
 
 
 def liga_health():
@@ -82,9 +87,7 @@ def liga_health():
         'div', class_='news-block-img big-list-article').find('a').get('href')
     text = soup.find(
         'div', class_='news-text').text
-    result = f'<a href="{link}">{text}</a>'
-    # print(str(result))
-    return link
+    return link, text, "(liga.net)"
 
 
 def liga_sport():
@@ -95,6 +98,5 @@ def liga_sport():
         'div', class_='news-block-img big-list-article').find('a').get('href')
     text = soup.find(
         'div', class_='news-text').text
-    # result = [link, text]
-    # print(str(result))
-    return link
+    return link, text, "(liga.net)"
+

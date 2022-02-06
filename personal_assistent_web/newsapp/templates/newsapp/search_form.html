@@ -1,10 +1,11 @@
 {% extends 'main/source.html' %}
 
 {% block title %}
-page
+Newsapp page
 {% endblock %}}
 
 {% block content %}
+<br>
 <a href="../newsapp">
     <button class="btn btn-primary">Return</button>
 </a>
@@ -25,7 +26,7 @@ page
 <!--    <button class="btn btn-primary">Choice</button>-->
 <!--</form>-->
 <!--</body>-->
-
+<h5> Choose the category of information that you need</h5>
 <body>
 <form action="/newsapp_search/" method="get">
     <p><select name="q">

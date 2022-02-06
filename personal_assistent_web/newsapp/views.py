@@ -22,15 +22,11 @@ def search(request):
         elif q == 'SPORT':
             results = [bbc_sport(), liga_sport()]
         else:
-            results = [bbc_tech(), bbc_sceince(), bbc_health(), bbc_sport(), liga_sport(), liga_health(),
-                       liga_sceince(), liga_tech()]
+            results = [bbc_tech(), liga_tech(), bbc_sceince(), liga_sceince(), bbc_health(), liga_health(), bbc_sport(),
+                       liga_sport()]
 
         return render(request, 'newsapp/search.html', {'results': results, 'query': q})
 
 
 def search_form(request):
     return render(request, 'newsapp/search_form.html')
-
-
-def output(request):
-    return render(request, 'newsapp/output.html')
