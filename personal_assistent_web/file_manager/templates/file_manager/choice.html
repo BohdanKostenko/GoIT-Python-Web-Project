@@ -1,0 +1,33 @@
+{% extends 'main/source.html' %}
+
+{% block title %}
+File manager page
+{% endblock %}}
+
+{% block content %}
+<br>
+<a href="../file_manager">
+    <button class="btn btn-primary">Return</button>
+</a>
+<br>
+<br>
+<p>Your choice: <strong>{{ query }}</strong></p>
+
+
+ {% if documents %}
+
+            <ul>
+                {% for document in documents %}
+                    <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No documents.</p>
+        {% endif %}
+
+<br>
+<a href="../file_manager">
+    <button class="btn btn-primary">New choice</button>
+</a>
+
+{% endblock %}

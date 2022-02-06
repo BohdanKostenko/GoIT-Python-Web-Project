@@ -6,7 +6,41 @@ File manager page
 
 
 {% block content %}
-<h2>File manager page</h2>
-<h2>Here we will create magic</h2>
+<br>
+ <body>
 
+        <!-- Upload form. Note enctype attribute! -->
+        <form action="{% url 'file_manager' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h5>{{ message }}</h5>
+            <p>{{ form.non_field_errors }}</p>
+
+            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+
+            <p>
+                {{ form.docfile.errors }}
+                {{ form.docfile }}
+            </p>
+
+            <p><button type="submit" class="btn btn-primary"> Upload</button>
+
+<!--                <input type="submit" value="Upload"/></p>         -->
+        </form>
+    </body>
+<br>
+<br>
+<h5> Choose the category of files that you need</h5>
+<body>
+<form action="/file_manager_choice/" method="get">
+    <p><select name="q">
+        <option value="VIDEO">VIDEO</option>
+        <option value="MUSIC">MUSIC</option>
+        <option value="IMAGES">IMAGES</option>
+        <option value="DOCUMENTS">DOCUMENTS</option>
+        <option value="ARCH">ARCH</option>
+        <option value="ALL">ALL</option>
+    </select></p>
+    <button type="submit" class="btn btn-primary">Choice</button>
+</form>
+</body>
 {% endblock %}
