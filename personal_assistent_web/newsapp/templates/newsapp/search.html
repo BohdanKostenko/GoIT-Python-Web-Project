@@ -1,0 +1,28 @@
+{% extends 'main/source.html' %}
+
+{% block title %}
+Addressbook page
+{% endblock %}}
+
+{% block content %}
+<a href="../newsapp">
+    <button class="btn btn-primary">Return</button>
+</a>
+<br>
+
+<p>Your choice: <strong>{{ query }}</strong></p>
+
+
+{% for obj in results %}
+
+<li><a href="{{obj}} ">{{obj.title.lower}}</a> <br>
+
+    {% endfor %}
+
+
+<br>
+<a href="../newsapp_search_form">
+    <button class="btn btn-primary">New choice</button>
+</a>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'main/source.html' %}
+
+{% block title %}
+page
+{% endblock %}}
+
+{% block content %}
+<a href="../newsapp">
+    <button class="btn btn-primary">Return</button>
+</a>
+<br>
+<br>
+
+<!--<body>-->
+<!--<form action="/newsapp_search/" method="get">-->
+<!--    <p><select size="6" multiple name="q">-->
+<!--        <option disabled>Choice category</option>-->
+<!--        <option value="TECH">TECH</option>-->
+<!--        <option value="SCIENCE">SCIENCE</option>-->
+<!--        <option value="HEALTH">HEALTH</option>-->
+<!--        <option value="SPORT">SPORT</option>-->
+<!--        <option selected value="ALL">ALL</option>-->
+<!--    </select></p>-->
+
+<!--    <button class="btn btn-primary">Choice</button>-->
+<!--</form>-->
+<!--</body>-->
+
+<body>
+<form action="/newsapp_search/" method="get">
+    <p><select name="q">
+        <option value="TECH">TECH</option>
+        <option value="SCIENCE">SCIENCE</option>
+        <option value="HEALTH">HEALTH</option>
+        <option value="SPORT">SPORT</option>
+        <option value="ALL">ALL</option>
+    </select></p>
+    <button type="submit" class="btn btn-primary">Choice</button>
+</form>
+</body>
+
+{% endblock %}
