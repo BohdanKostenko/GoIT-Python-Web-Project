@@ -5,14 +5,15 @@ Addressbook page
 {% endblock %}}
 
 {% block content %}
+
 <a href="../addressbook">
-  <button class="btn btn-primary">Return</button>
+    <button class="btn btn-primary">Return</button>
 </a>
 <br>
 
 <html>
 <head>
-<title>Search</title>
+    <title>Search</title>
 </head>
 <body>
 {% if error %}
@@ -20,38 +21,38 @@ Addressbook page
 {% endif %}
 <h4>Enter number of days</h4>
 <form action="/addressbook_birthday/" method="get">
-<input type="number" name="q" required>
+    <input type="number" name="q" required>
 
-  <button class="btn btn-primary">Search</button>
-<br>
-  <br>
-  <br>
+    <button class="btn btn-primary">Search</button>
+    <br>
+    <br>
+    <br>
 
-  <h4>birthdays this month</h4>
+    <h4>birthdays this month</h4>
 
-  {% if contacts %}
+    {% if contacts %}
     <p>Found {{ contacts|length }} contact{{ contacts|pluralize }}.</p>
     <ul>
         {% for contact in contacts %}
         <a href="{% url 'detail' contact.id %}"> {{contact.name}} </a> {{contact.birthday}}<br> </a>
         {% endfor %}
     </ul>
-{% else %}
+    {% else %}
     <p>No contacts matched your search criteria.</p>
-{% endif %}
+    {% endif %}
 
- <h4>birthdays next month</h4>
+    <h4>birthdays next month</h4>
 
-  {% if next_contacts %}
+    {% if next_contacts %}
     <p>Found {{ next_contacts|length }} contact{{ next_contacts|pluralize }}.</p>
     <ul>
         {% for contact in next_contacts %}
         <a href="{% url 'detail' contact.id %}"> {{contact.name}} </a> {{contact.birthday}}<br>
         {% endfor %}
     </ul>
-{% else %}
+    {% else %}
     <p>No contacts matched your search criteria.</p>
-{% endif %}
+    {% endif %}
 
 </form>
 </body>
