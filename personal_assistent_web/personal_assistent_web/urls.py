@@ -24,7 +24,7 @@ urlpatterns = [
     path('file_manager/', include('file_manager.urls')),
     path('newsapp/', include('newsapp.urls')),
     path('noteapp.html/', include('noteapp.urls')),
-    # path('', include('addressbook.urls')),
-    # path('', include('newsapp.urls')),
-    # path('', include('file_manager.urls')),
+    path('', include('addressbook.urls')),
+    path('', include('newsapp.urls')),
+    path('', include('file_manager.urls')),
 ]
