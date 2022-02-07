@@ -15,21 +15,41 @@
         <div>
           <h3 class="float-md-start mb-0">Optimize your life !</h3>
           <nav class="nav nav-masthead justify-content-center float-md-end">
+            {% if user.is_authenticated %}
+            <a class="nav-link" href="{% url 'logout' %}">Log out</a>
             <a class="nav-link" href="{% url 'home' %}">Home</a>
             <a class="nav-link" href="{% url 'addressbook' %}">Addressbook</a>
             <a class="nav-link" href="{% url 'noteapp' %}">Noteapp</a>
             <a class="nav-link" href="{% url 'newsapp' %}">Newsapp</a>
             <a class="nav-link" href="{% url 'file_manager' %}">File manager</a>
+            {% else %}
+            <a class="nav-link" href="{% url 'login' %}">Log In</a>
+            <a class="nav-link" href="{% url 'signup' %}">Sing Up</a>
+            {% endif %}
+
           </nav>
         </div>
       </header>
       <main class="px-3 mt-4">
         <h1>Make good use of your resources !</h1>
-        <p class="lead mb-2">{% block content %}{% endblock %}</p>
+          <br>
+          {% if user.is_authenticated %}
+          <h2>Hi {{ user.username }}!</h2>
+          <br>
+          <p class="lead mb-2">{% block content %}{% endblock %}</p>
+          {% else %}
+          <br>
+          <h2 class="nav-link">You are not logged in.</h2>
+          <br>
+          <a class="nav-link" href="{% url 'login' %}">Log In</a>
+          <br>
+          <p>or</p>
+          <a class="nav-link" href="{% url 'signup' %}">Sing Up</a>
+          {% endif %}
       </main>
         <div class="fixed-bottom">
       <footer class="mt-auto text-white-50">
-        <p>Project4 by best team</a>.</p>
+        <p>Project4 by best team.</p>
       </footer>
         </div>
     </div>
