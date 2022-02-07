@@ -1,0 +1,33 @@
+{% extends 'main/source.html' %}
+
+{% block title %}
+Choice page
+{% endblock %}}
+
+{% block content %}
+<br>
+<a href="{% url 'noteapp' %}">
+    <button class="btn btn-primary">Return</button>
+</a>
+<br>
+<br>
+<p>Your choice: <strong>{{ query }}</strong></p>
+
+{% if tags %}
+        {% for tag in tags %}
+        <div class="alert alert-success mt-4">
+            <h4>Published date: {{ tag.pub_date }}</h4>
+            <h5>{{ tag.note }} </h5>
+            <a href="{% url 'note-detail' tag.id %}" class="btn btn-warning">More options</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>You dont have note</p>
+    {% endif %}
+
+<br>
+<a href="{% url 'noteapp' %}">
+    <button class="btn btn-primary">New choice</button>
+</a>
+
+{% endblock %}

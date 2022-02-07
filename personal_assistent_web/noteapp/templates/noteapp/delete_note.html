@@ -1,15 +1,15 @@
 {% extends 'main/source.html' %}
 
 {% block title %}
-{{ title }}
+Delete note
 {% endblock %}}
 
 
 {% block content %}
 <form action="" method = "post">
     {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit" class="btn btn-success">Create note</button>
+    <p>Are you sure you want to delete "{{ object.tag }}"?</p>
+    <button type="submit" class="btn btn-warning">Delete note</button>
     <span>{{ error }}</span>
 </form>
 {% endblock %}
