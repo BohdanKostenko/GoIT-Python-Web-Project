@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+import pymysql
+
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,8 +41,8 @@ INSTALLED_APPS = [
     'addressbook.apps.AddressbookConfig',
     'newsapp.apps.NewsappConfig',
     'noteapp.apps.NoteappConfig',
-    'main',
-    'file_manager',
+    'main.apps.MainConfig',
+    'file_manager.apps.AuthUserConfig',
 ]
 
 MIDDLEWARE = [
@@ -86,9 +89,9 @@ DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'web_project',
-#         'USER': 'user1',
-#         'PASSWORD': 'Python_project_goit1',
-#         'HOST': '140.238.212.157',
+#         'USER': 'root',
+#         'PASSWORD': '123456789',
+#         'HOST': '127.0.0.1',
 #         'PORT': '3306',
 #         'TIME_ZONE': 'Europe/Kiev',
 #         'OPTIONS': {'connect_timeout': 1},
@@ -122,7 +125,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = None
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -136,4 +139,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL = 'login'

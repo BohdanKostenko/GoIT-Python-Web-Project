@@ -10,6 +10,10 @@ class SignUpView(generic.CreateView):
     template_name = 'main/signup.html'
 
 
+def about(request):
+    return render(request, 'main/about.html')
+
+
 def signup(request):
     return render(request, 'main/signup.html')
 

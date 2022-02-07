@@ -18,8 +18,8 @@
 
 
                 <a class="nav-link">You are not logged in.</a>
-                <a class="nav-link" href="{% url 'login' %}">Log In</a>
-                <a class="nav-link" href="{% url 'signup' %}">Sing Up</a>
+                <a class="btn btn-primary" aria-current="page" href="{% url 'login' %}">Log In</a>
+                <a class="btn btn-primary" aria-current="page" href="{% url 'signup' %}">Sing Up</a>
 
           </nav>
         </div>
@@ -29,14 +29,14 @@
         <div>
             <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            <div class="container" > {{ form }}</div>
             <button type="submit">Sign up</button>
           </form>
         </div>
       </main>
         <div class="fixed-bottom">
       <footer class="mt-auto text-white-50">
-        <p>Project4 by best team</a>.</p>
+        <p>Project4 by best team</p>
       </footer>
         </div>
     </div>
