@@ -6,14 +6,12 @@ Newsapp page
 
 
 {% block content %}
-<h2>Newsapp page</h2>
+ <a href="{% url 'newsapp_search_form' %}">
+    <button class="btn btn-primary">More news?</button>
+</a>
 <!-- Minfin.com.ua currency informer 350x120 yellow-->
 <div id="minfin-informer-m1Fn-currency">Завантажуємо <a href="https://minfin.com.ua/ua/currency/" target="_blank">курси валют</a> від minfin.com.ua</a></div><script>var iframe = '<ifra'+'me width="350" height="120" fram'+'eborder="0" src="https://informer.minfin.com.ua/ua/gen/course/?color=yellow" vspace="0" scrolling="no" hspace="0" allowtransparency="true"style="width:350px;height:120px;ove'+'rflow:hidden;"></iframe>';var cl = 'minfin-informer-m1Fn-currency';document.getElementById(cl).innerHTML = iframe; </script><noscript><img src="https://informer.minfin.com.ua/gen/img.png" width="1" height="1" alt="minfin.com.ua: курси валют" title="Курс валют" border="0" /></noscript>
 <!-- Minfin.com.ua currency informer 350x120 yellow-->
 <div id="ww_6255a1496a67d" v='1.20' loc='id' a='{"t":"horizontal","lang":"uk","ids":["wl2337"],"cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_sot":"celsius","sl_ics":"one_a","font":"Arial"}'>Weather Data Source: <a href="https://meteolabs.com.ua/укр/погода_україна/" id="ww_6255a1496a67d_u" target="_blank">Погода Україна</a></div><script async src="https://srv2.weatherwidget.org/js/?id=ww_6255a1496a67d"></script>
 <br>
-<br>
- <a href="{% url 'newsapp_search_form' %}">
-    <button class="btn btn-primary">More news?</button>
-</a>
 {% endblock %}
