@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 import pymysql
 
+
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -78,25 +79,24 @@ WSGI_APPLICATION = 'personal_assistent_web.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'web_project',
-#         'USER': 'root',
-#         'PASSWORD': '123456789',
-#         'HOST': '127.0.0.1',
-#         'PORT': '3306',
-#         'TIME_ZONE': 'Europe/Kiev',
-#         'OPTIONS': {'connect_timeout': 1},
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'web_project', 'USER': 'user1',
+        'PASSWORD': 'Python_project_goit1',
+        'HOST': '140.238.212.157',
+        'PORT': '3306',
+        'TIME_ZONE': 'Europe/Kiev',
+        'OPTIONS': {'connect_timeout': 1},
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -125,7 +125,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = None
+USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/

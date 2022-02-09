@@ -1,5 +1,5 @@
 {% extends 'main/source.html' %}
-
+{% load static %}
 {% block title %}
 Main page
 {% endblock %}}
@@ -7,5 +7,5 @@ Main page
 
 {% block content %}
 <h2>Welcome to Asterix app</h2>
-<img src="1.png">
+<img src="{% static 'img/1.png' %}">
 {% endblock %}

@@ -12,7 +12,9 @@ def addressbook(request):
 
 
 def show(request):
-    latest_contact_list = Contact.objects.order_by('name')
+    user_id = request.user.id
+    # latest_contact_list = Contact.objects.order_by('name')
+    latest_contact_list = Contact.objects.filter(user_id=user_id).order_by('name')
     context = {'latest_contact_list': latest_contact_list}
     return render(request, 'addressbook/contacts.html', context)
 
@@ -20,9 +22,19 @@ def show(request):
 def create(request):
     error = ''
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        data_request = request.POST
+        user_id = request.user.id
+        form = ContactForm(data_request)
         if form.is_valid():
-            form.save()
+            # form.save()
+            Contact.objects.create(
+                name=data_request['name'],
+                phone=data_request['phone'],
+                birthday=data_request['birthday'],
+                email=data_request['email'],
+                address=data_request['address'],
+                user_id=user_id
+            )
             return redirect('addressbook')
         else:
             error = "Форма была неверной"
@@ -61,12 +73,13 @@ def edit(request, contact_id):
 
 def search(request):
     CharField.register_lookup(Lower, "lower")
+    user_id = request.user.id
     if 'q' in request.GET:
         q = request.GET['q']
     if not q:
         return HttpResponse('Please submit a search term.')
     else:
-        contacts = Contact.objects.filter(Q(name__iregex=q))
+        contacts = Contact.objects.filter(user_id=user_id).filter(Q(name__iregex=q))
         return render(request, 'addressbook/search.html', {'contacts': contacts, 'query': q})
 
 
@@ -75,13 +88,15 @@ def search_form(request):
 
 
 def birthday_form(request):
+    user_id = request.user.id
     now = datetime.today()
-    contacts = Contact.objects.filter(birthday__month=now.strftime("%m"))
-    next_contacts = Contact.objects.filter(birthday__month=(now.month + 1))
+    contacts = Contact.objects.filter(user_id=user_id).filter(birthday__month=now.strftime("%m"))
+    next_contacts = Contact.objects.filter(user_id=user_id).filter(birthday__month=(now.month + 1))
     return render(request, 'addressbook/input_form.html', {'contacts': contacts, 'next_contacts': next_contacts})
 
 
 def birthday(request):
+    user_id = request.user.id
     now = datetime.today()
     if 'q' in request.GET:
         q = request.GET['q']
@@ -91,7 +106,7 @@ def birthday(request):
         # contacts = Contact.objects.filter(
         #     Q(birthday__month__lte=(now + timedelta(int(q))).strftime("%m")),
         #     Q(birthday__month__gte=now.strftime("%m")))
-        contacts = Contact.objects.raw(
+        contacts = Contact.objects.filter(user_id=user_id).raw(
             f'SELECT * FROM addressbook_contact WHERE dayofyear(birthday) between dayofyear(now()) and dayofyear(now() + interval {q} day)')
 
     return render(request, 'addressbook/birthday.html',
