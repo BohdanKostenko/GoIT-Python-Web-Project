@@ -12,7 +12,13 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 import pymysql
+from os import environ
+from dotenv import load_dotenv
 
+load_dotenv()
+
+SECRET_KEY = environ['SECRET_KEY']
+PASS = environ['PASS']
 
 pymysql.install_as_MySQLdb()
 
@@ -23,12 +29,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--+2lvyw(6sb50k#q_^_y1t0rif#p)11p)hn%o%-+=l!&!(u!qg'
+SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -82,9 +88,10 @@ WSGI_APPLICATION = 'personal_assistent_web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'web_project', 'USER': 'user1',
-        'PASSWORD': 'Python_project_goit1',
-        'HOST': '140.238.212.157',
+        'NAME': 'web_project',
+        'USER': 'user1',
+        'PASSWORD': PASS,
+        'HOST': 'localhost',
         'PORT': '3306',
         'TIME_ZONE': 'Europe/Kiev',
         'OPTIONS': {'connect_timeout': 1},
@@ -134,3 +141,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'home'
 
 LOGOUT_REDIRECT_URL = 'login'
+
+CSRF_TRUSTED_ORIGINS = ['https://*.ngrok.io','https://*.127.0.0.1']
