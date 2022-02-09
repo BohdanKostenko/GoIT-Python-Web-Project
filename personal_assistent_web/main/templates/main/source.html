@@ -13,42 +13,25 @@
 
       <header class="mb-auto">
         <div>
+          <font color="#63a4ff">
           <h3 class="float-md-start mb-0">Optimize your life !</h3>
+          </font>
           <nav class="nav nav-masthead justify-content-center float-md-end">
-            {% if user.is_authenticated %}
-            <div class="btn-group">
-              <a class="btn btn-primary" aria-current="page" href="{% url 'home' %}">Home</a>
-              <a class="btn btn-primary" aria-current="page" href="{% url 'addressbook' %}">Addressbook</a>
-              <a class="btn btn-primary" aria-current="page" href="{% url 'noteapp' %}">Noteapp</a>
-              <a class="btn btn-primary" aria-current="page" href="{% url 'newsapp' %}">Newsapp</a>
-              <a class="btn btn-primary" aria-current="page" href="{% url 'file_manager' %}">File manager</a>
-              <a class="btn btn-primary" aria-current="page" href="{% url 'logout' %}">Log out</a>
-              <a href="{% url 'about' %}" class="btn btn-info" aria-current="page">About</a>
-            </div>
-            {% else %}
-            <a class="nav-link" href="{% url 'login' %}">Log In</a>
-            <a class="nav-link" href="{% url 'signup' %}">Sing Up</a>
-            {% endif %}
-
+                <a class="nav-link">You are not logged in.</a>
+                <a class="btn btn-primary" aria-current="page" href="{% url 'login' %}">Log In</a>
+                <a class="btn btn-primary" aria-current="page" href="{% url 'signup' %}">Sing Up</a>
           </nav>
         </div>
       </header>
       <main class="px-3 mt-4">
-        <h1>Make good use of your resources !</h1>
-          <br>
-          {% if user.is_authenticated %}
-          <h2>Hi {{ user.username }}!</h2>
-          <br>
-          <p class="lead mb-2">{% block content %}{% endblock %}</p>
-          {% else %}
-          <br>
-          <h2 class="nav-link">You are not logged in.</h2>
-          <br>
-          <a class="nav-link" href="{% url 'login' %}">Log In</a>
-          <br>
-          <p>or</p>
-          <a class="nav-link" href="{% url 'signup' %}">Sing Up</a>
-          {% endif %}
+        <h2>Sign up</h2>
+        <div>
+            <form method="post">
+            {% csrf_token %}
+            <div class="container" > {{ form }}</div>
+            <button type="submit">Sign up</button>
+          </form>
+        </div>
       </main>
         <div class="fixed-bottom">
       <footer class="mt-auto text-white-50">
@@ -57,4 +40,3 @@
         </div>
     </div>
 </body>
-</html>

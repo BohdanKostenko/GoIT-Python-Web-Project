@@ -13,24 +13,25 @@
 
       <header class="mb-auto">
         <div>
+          <font color="#63a4ff">
           <h3 class="float-md-start mb-0">Optimize your life !</h3>
+          </font>
           <nav class="nav nav-masthead justify-content-center float-md-end">
-
-
                 <a class="nav-link">You are not logged in.</a>
                 <a class="btn btn-primary" aria-current="page" href="{% url 'login' %}">Log In</a>
                 <a class="btn btn-primary" aria-current="page" href="{% url 'signup' %}">Sing Up</a>
-
           </nav>
         </div>
       </header>
-      <main class="container" style="width:400px;">
+      <main class="px-3 mt-4">
         <h2>Sign up</h2>
+        <div>
             <form method="post">
             {% csrf_token %}
-            <div class="form-group row" > {{ form }}</div>
+            <div class="container" > {{ form }}</div>
             <button type="submit">Sign up</button>
           </form>
+        </div>
       </main>
         <div class="fixed-bottom">
       <footer class="mt-auto text-white-50">
