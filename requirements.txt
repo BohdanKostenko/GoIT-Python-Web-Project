@@ -1,0 +1,5 @@
+Django
+requests
+lxml
+beautifulsoup4
+mysqlclient
