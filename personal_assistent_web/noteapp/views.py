@@ -8,7 +8,6 @@ from django.urls import reverse_lazy
 
 
 def choice(request):
-    user_id = request.user.id
     CharField.register_lookup(Lower, "lower")
     if 'q' in request.GET:
         q = request.GET['q']
@@ -42,8 +41,7 @@ def choice(request):
 
 
 def noteapp(request):
-    user_id = request.user.id
-    notes = Notes.objects.filter(user_id=user_id).order_by('-pub_date')
+    notes = Notes.objects.order_by('-pub_date')
     return render(request, 'noteapp/noteapp.html', {'title': 'Noteapp page', 'notes': notes})
 
 
@@ -85,13 +83,12 @@ class NoteDeleteView(DeleteView):
 
 def search_views(request):
     CharField.register_lookup(Lower, "lower")
-    user_id = request.user.id
     if 'q' in request.GET:
         q = request.GET['q']
     if not q:
         return HttpResponse('Please submit a search term.')
     else:
-        notes = Notes.objects.filter(user_id=user_id).filter(Q(note__iregex=q))
+        notes = Notes.objects.filter(Q(note__iregex=q))
         return render(request, 'noteapp/search_results.html', {'notes': notes, 'query': q})
 
 
@@ -100,20 +97,12 @@ def search_form(request):
 
 
 def create_note(request):
-    user_id = request.user.id
     error = ''
     if request.method == 'POST':
-
-        print(user_id)
         data_request = request.POST
         form = NotesForm(data_request)
         if form.is_valid():
-            Notes.objects.create(
-                tag=data_request['tag'],
-                note=data_request['note'],
-                pub_date=data_request['pub_date'],
-                user_id=user_id
-            )
+            form.save()
             return redirect('noteapp')
         else:
             error = 'Invalid form'

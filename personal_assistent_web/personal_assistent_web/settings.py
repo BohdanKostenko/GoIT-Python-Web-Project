@@ -89,9 +89,10 @@ WSGI_APPLICATION = 'personal_assistent_web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'web_project', 'USER': 'user1',
-        'PASSWORD': 'Python_project_goit1',
-        'HOST': '140.238.212.157',
+        'NAME': 'web_project',
+        'USER': 'root',
+        'PASSWORD': '123456789',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
         'TIME_ZONE': 'Europe/Kiev',
         'OPTIONS': {'connect_timeout': 1},

@@ -1,16 +1,13 @@
 from django.db import models
 from datetime import datetime
-from django.conf import settings
+
 
 
 class Notes(models.Model):
     tag = models.ForeignKey('Category', on_delete=models.PROTECT, null=True)
     note = models.TextField('note')
     pub_date = models.DateTimeField(default=datetime.now, blank=True)
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
-    )
+
 
     def __str__(self):
         return self.note
